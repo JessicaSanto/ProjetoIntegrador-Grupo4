@@ -58,7 +58,7 @@ mqtt_data = {}
 
 def on_connect(client, userdata, flags, rc, properties=None):
     print("Connected with result code " + str(rc))
-    client.subscribe("projeto_integrado/SENAI134/Cienciadedados/grupo1")
+    client.subscribe("projeto_integrado/SENAI134/Cienciadedados/grupo4")
 
 def on_message(client, userdata, msg):
     global mqtt_data
@@ -264,9 +264,9 @@ def gera_response(status, nome_do_conteudo, conteudo, mensagem=False):
         body["mensagem"] = mensagem
     return Response(json.dumps(body), status=status, mimetype="application/json")
 
-if __name__ == '__main__':
-    with app.app_context():
-        mybd.create_all()  # Cria as tabelas no banco de dados
+# if __name__ == '__main__':
+#     with app.app_context():
+#         mybd.create_all()  # Cria as tabelas no banco de dados
     
-    start_mqtt()
-    app.run(port=5000, host='localhost', debug=True)
+start_mqtt()
+app.run(port=5000, host='localhost', debug=True)
