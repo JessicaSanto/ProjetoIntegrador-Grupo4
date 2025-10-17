@@ -9,11 +9,11 @@ import paho.mqtt.client as mqtt
 app = Flask('registro')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-server_name = "projetointegrador-grupo4.mysql.database.azure.com"
+server_name = "projetogrupo4.mysql.database.azure.com"
 port= "3306"
-username = "projeto3"
+username = "projeto4"
 password = "senai%40134"
-database = "db_projetointegrador"
+database = "db_projeto"
 
 certificado = "DigiCertGlobalRootG2.crt.pem"
 
@@ -89,9 +89,9 @@ def on_message(client, userdata, msg):
                 return
             
             # Determina Periodo
-            periodo = calcular_periodo(timestamp)
+            # periodo = calcular_periodo(timestamp)
 
-            dia, hora = extrair_dia_hora(timestamp)
+            # dia, hora = extrair_dia_hora(timestamp)
 
             # Cria o objeto Registro com os dados
             new_data = Registro(
@@ -102,9 +102,9 @@ def on_message(client, userdata, msg):
                 co2=co2,
                 dia_hora=timestamp,
                 localizacao=localizacao,
-                periodo=periodo,
-                dia=dia,
-                hora=hora
+                # periodo=periodo,
+                # dia=dia,
+                # hora=hora
                 
             )
 
@@ -168,9 +168,9 @@ def post_data():
             co2=co2,
             dia_hora=timestamp,
             localizacao=localizacao,
-            periodo=periodo,
-            dia=dia,
-            hora=hora
+            # periodo=periodo,
+            # dia=dia,
+            # hora=hora
         )
 
         # Adiciona o novo registro ao banco de dados
@@ -204,9 +204,9 @@ class Registro(mybd.Model):
     co2 = mybd.Column(mybd.Numeric(10, 2))
     dia_hora = mybd.Column(mybd.DateTime)
     localizacao = mybd.Column(mybd.String(255))
-    periodo = mybd.Column(mybd.String(255))
-    dia = mybd.Column(mybd.String(255))
-    hora = mybd.Column(mybd.String(255))
+    # periodo = mybd.Column(mybd.String(255))
+    # dia = mybd.Column(mybd.String(255))
+    # hora = mybd.Column(mybd.String(255))
 
     def to_json(self):
         return {
@@ -218,9 +218,9 @@ class Registro(mybd.Model):
             "co2": float(self.co2),
             "dia_hora": self.dia_hora.strftime('%Y-%m-%d %H:%M:%S') if self.dia_hora else None,
             "localizacao": "Litoral",
-            "periodo": self.periodo,
-            "dia": self.dia,
-            "hora": self.hora
+            # "periodo": self.periodo,
+            # "dia": self.dia,
+            # "hora": self.hora
         }
 
 # *************************************************************************************
