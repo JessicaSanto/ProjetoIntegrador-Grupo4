@@ -15,6 +15,7 @@ username = "projeto4"
 password = "senai%40134"
 database = "db_projeto"
 
+
 certificado = "DigiCertGlobalRootG2.crt.pem"
 
 uri = f"mysql://{username}:{password}@{server_name}:{port}/{database}"
