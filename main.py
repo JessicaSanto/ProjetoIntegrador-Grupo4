@@ -270,4 +270,4 @@ def gera_response(status, nome_do_conteudo, conteudo, mensagem=False):
 #         mybd.create_all()  # Cria as tabelas no banco de dados
     
 start_mqtt()
-app.run(port=5000, host='localhost', debug=True)
+app.run(port=5004, host='localhost', debug=True)
